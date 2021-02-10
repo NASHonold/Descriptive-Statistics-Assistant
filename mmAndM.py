@@ -111,8 +111,8 @@ while True:
     print('===========================================================')
     print('You can copy and paste your data values in',
     '\nas long as each data point is seperated by a comma or space.',
-    '\nNote that it does not matter how many spaces or commas only that',
-    '\nthe data is seperated. Type (q) when you want to quit ')
+    '\nNote that it does not matter how many spaces or commas only ',
+    '\nthat the data is seperated. Type (q) when you want to quit ')
     print('===========================================================\n')
 
 
@@ -142,7 +142,7 @@ while True:
     pop_variance = get_pop_variance(data_list, sum_of_squares)
     deviation = get_deviation(variance)
     pop_deviation = get_deviation(pop_variance)
-    
+
     print('------------------------------------')
     print('Sorted list below:')
     print(*data_list, sep=', ')
