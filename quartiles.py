@@ -56,9 +56,10 @@ def Get_Median(data_list):
 
 def Get_Median_Index(data_list):
     list_length = len(data_list)
+    median_index2 = 0
     if list_length % 2 == 1:
         median_index = int(list_length/2)
-        return median_index
+        return median_index,median_index2
     else:
         median_index2 = int(list_length/2)
         median_index1 = median_index2 - 1
