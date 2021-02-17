@@ -16,7 +16,7 @@ def Zscore_with_value():
     mean = float(input('What it is the mean value?: '))
     deviation = float(input('What is the standard deviation?: '))
     answer = Get_Zscore(value, mean, deviation)
-    print('Your z score is {}'.format(format(answer, '.2f')))
+    print('Your z score is {}'.format(format(answer, '.4f')))
 
 
 def get_value_from_zscore():
@@ -24,7 +24,7 @@ def get_value_from_zscore():
     mean = float(input('What it is the mean value?: '))
     deviation = float(input('What is the standard deviation?: '))
     answer = get_value(zscore, mean, deviation)
-    print('Your value is {}'.format(format(answer, '.2f')))
+    print('Your value is {}'.format(format(answer, '.4f')))
 
 while True:
     print('--------------------------------------------------')
