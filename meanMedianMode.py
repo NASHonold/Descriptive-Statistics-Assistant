@@ -86,6 +86,7 @@ def sum_of_the_squares(data_list, mean, value=False):
         
     return sum
 
+
 '''
 =========================== get_variance() =========================
 Takes the dataset as argument as well as the return value from 
@@ -95,6 +96,7 @@ dataset.
 def get_variance(data_list, sum_of_squares):
     return sum_of_squares / (len(data_list)-1)
 
+
 '''
 ============================ get_deviation() =======================
 returns the standard deviation of the dataset with the argument 
@@ -102,6 +104,7 @@ that is produced from the get_variance() method
 '''
 def get_deviation(variance):
     return math.sqrt(variance)
+
 
 '''
 ========================= get_pop_variance() =======================
@@ -111,12 +114,12 @@ variance as that formula is slightly different
 def get_pop_variance(data_list, sum_of_squares):
     return sum_of_squares / (len(data_list))
 
+
 '''
 =========================== main_loop() ===========================
 Main loop that will continue to run as long as the user needs. 
 '''
 def main_loop():
-
 
     while True:
         print('\n==================== 1 Variable Stats =====================')
@@ -132,12 +135,14 @@ def main_loop():
         print('Do you need the handwritten figures as well?',
         '\n(This is sometimes asked for in early homework)')
         handwritten = input('Type (y) for yes and (n) for no: ')
-        while handwritten != 'y' and handwritten != 'n':
+        while handwritten.lower != 'y' and handwritten.lower != 'n' and handwritten.lower != 'q':
             print('That is not an option.',
                 'Try again.')
             handwritten = input('Type (y) for yes and (n) for no: ')
         if handwritten == 'y':
             handwritten = True
+        elif handwritten == 'q':
+            break
         else:
             handwritten = False
         print()
