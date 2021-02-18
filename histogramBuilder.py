@@ -125,7 +125,7 @@ confirm below.
         class_boundaries = create_class_boundry_list(graph_start,class_width,class_num)
         build_graph(data_list,class_boundaries)
 
-main_loop()
+
 
 
 
