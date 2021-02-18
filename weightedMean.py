@@ -23,10 +23,7 @@ def list_from_string(string):
             if len(working_string) > 0:
                 a_list.append(float(working_string))
                 working_string = ''
-        
     return a_list
-
-
        
             
 def get_data_set():

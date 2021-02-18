@@ -20,7 +20,6 @@ def Process_Data_String(string):
                 working_string = ''
         
     a_list.sort()
-    print(a_list)
     return a_list
 
 
@@ -83,28 +82,27 @@ def Get_Quartiles(data_list):
         b_list = data_list[median_index2:]
         q1 = Get_Median(a_list)
         q3 = Get_Median(b_list)
-    print(a_list, b_list)
     return data_list[0],q1,q2,q3,data_list[-1]
 
 
+def main_func(data_string):
+    data_list = Process_Data_String(data_string)
+    min, q1, q2, q3, max = Get_Quartiles(data_list)
+    iqr = (q3 - q1)
+    lower_fence = q1 - (1.5 * iqr)
+    upper_fence = q3 + (1.5 * iqr)
+    min = format(min, '.4f')
+    q1 = format(q1, '.4f')
+    q2 = format(q2, '.4f')
+    q3 = format(q3, '.4f')
+    max = format(max, '.4f')
+    iqr = format(iqr, '.4f')
+    lower_fence = format(lower_fence, '.4f')
+    upper_fence = format(upper_fence, '.4f')
 
-data_list = Process_Data_String(get_data_set())
 
-min, q1, q2, q3, max = Get_Quartiles(data_list)
-iqr = (q3 - q1)
-lower_fence = q1 - (1.5 * iqr)
-upper_fence = q3 + (1.5 * iqr)
-min = format(min, '.4f')
-q1 = format(q1, '.4f')
-q2 = format(q2, '.4f')
-q3 = format(q3, '.4f')
-max = format(max, '.4f')
-iqr = format(iqr, '.4f')
-lower_fence = format(lower_fence, '.4f')
-upper_fence = format(upper_fence, '.4f')
-
-
-print('''
+    print('''
+---------------------------
 The five number summary is: 
 Min: {}
 q1: {}
@@ -114,6 +112,7 @@ Max: {}
 IQR: {}
 Lower Fence: {}
 Upper Fence: {}
+---------------------------
 '''.format(min, q1, q2,q3,max,iqr,lower_fence,upper_fence))
 
 
