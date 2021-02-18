@@ -1,44 +1,5 @@
+import valid
 
-
-def Process_Data_String(string):
-    if string == False:
-        return False
-    good_list = ['0','1','2','3','4','5','6','7','8','9','.']
-    a_list = []
-    final_index = len(string)
-    working_string = ''
-    
-    for index in range(final_index):
-        if string[index] in good_list:
-            working_string += string[index]
-        if string[index] not in good_list or index == (final_index - 1):
-            if len(working_string) == 1:
-                if working_string == '.':
-                    working_string = ''
-            if len(working_string) > 0:
-                a_list.append(float(working_string))
-                working_string = ''
-        
-    a_list.sort()
-    return a_list
-
-
-       
-            
-def get_data_set():
-    run = True
-    string = ''
-    while run:
-        data_set = input('Copy and paste or enter data set here: ')
-        string += data_set
-        
-        if data_set.lower() == 'd':
-            run = False
-        string += ' '
-        if data_set == 'q':
-            run = False
-            return False
-    return string
 
 
 def Get_Median(data_list):
@@ -86,7 +47,7 @@ def Get_Quartiles(data_list):
 
 
 def main_func(data_string):
-    data_list = Process_Data_String(data_string)
+    data_list = valid.process_data_string(data_string)
     min, q1, q2, q3, max = Get_Quartiles(data_list)
     iqr = (q3 - q1)
     lower_fence = q1 - (1.5 * iqr)

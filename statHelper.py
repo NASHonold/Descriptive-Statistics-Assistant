@@ -1,6 +1,14 @@
 
 import meanMedianMode
+import GFDT
+import zScore
 
+
+
+'''
+====================== print_menu() ========================
+Method just prints the menu options with descriptions. 
+'''
 def print_menu():
     print('''
 ================== Menu ==================
@@ -60,7 +68,10 @@ Quit----------------------------------(Q)
 
 
 
-
+'''
+========================== print_intro() ====================
+Prints the intro for the program
+'''
 def print_intro():
 
     print('''
@@ -82,6 +93,12 @@ Possibly more later!
 '''
 )
 
+'''
+===================== get_menu_choice() ======================
+Takes user input in main menu and validates usable input.
+If not will prompt user for appropriate input. returns 
+validated user input. 
+'''
 def get_menu_choice():
     print()
     choice = input('Enter Selection Here: ').upper()
@@ -97,8 +114,12 @@ def get_menu_choice():
 
 
 
-
-
+'''
+========================= main_loop() =======================
+Thit loop implements above print statements and get_menu_choice()
+to determine what functions to access for user. While True loop 
+that waits for inpout 
+'''
 def main_loop():
     print_intro()
     while True:
@@ -110,9 +131,11 @@ def main_loop():
             print('in a')
 
         elif choice == 'B':
+            GFDT.main_loop()
             print()
 
         elif choice == 'C':
+            zScore.main_loop()
             print()
 
         elif choice == 'D':

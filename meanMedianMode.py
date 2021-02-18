@@ -1,56 +1,7 @@
 import math
 import quartiles
+import valid
 
-'''
-==================== list_from_string() ===========================
-This method takes a string composed of numbers from the user 
-input and parses it and appends the data to a string. THis method
-uses spaces and to dilineate between numbers in the string. 
-'''
-def list_from_string(string):
-    if string == False:
-        return False
-    good_list = ['0','1','2','3','4','5','6','7','8','9','.']
-    a_list = []
-    final_index = len(string)
-    working_string = ''
-    
-    for index in range(final_index):
-        if string[index] in good_list:
-            working_string += string[index]
-        if string[index] not in good_list or index == (final_index - 1):
-            if len(working_string) == 1:
-                if working_string == '.':
-                    working_string = ''
-            if len(working_string) > 0:
-                a_list.append(float(working_string))
-                working_string = ''
-        
-    a_list.sort()
-    return a_list
-
-
-       
-'''
-====================  String get_data_set() ========================
-This takes the user input and either returns the string of user data
-for processing or returns Boolean value False which starts a chain
-reaction to break the main while loop. 
-'''            
-def get_data_set():
-    run = True
-    string = ''
-    while run:
-        data_set = input('Copy and paste or enter data set here: ')
-        string += data_set
-        
-        if data_set.lower() == 'd':
-            run = False
-        string += ' '
-        if data_set == 'q':
-            run = False
-            return False
-    return string
             
 '''
 ========================== float gen_mean() =========================
@@ -191,7 +142,7 @@ def main_loop():
             handwritten = False
         print()
         data_string = get_data_set()
-        data_list = list_from_string(data_string)
+        data_list = valid.process_data_string(data_string)
         if  data_list == False:
             break
 
