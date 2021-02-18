@@ -2,7 +2,8 @@
 import meanMedianMode
 import GFDT
 import zScore
-
+import weightedMean
+import histogramBuilder
 
 
 '''
@@ -139,9 +140,11 @@ def main_loop():
             print()
 
         elif choice == 'D':
+            weightedMean.main_loop()
             print()
 
         elif choice == 'E':
+            histogramBuilder.main_loop()
             print()
 
         elif choice == 'Q':

@@ -141,7 +141,7 @@ def main_loop():
         else:
             handwritten = False
         print()
-        data_string = get_data_set()
+        data_string = valid.get_data_set()
         data_list = valid.process_data_string(data_string)
         if  data_list == False:
             break

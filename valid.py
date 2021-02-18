@@ -37,7 +37,7 @@ def get_int_selection(prompt):
 def get_float_selection(prompt):
     while True:
         user_input = input(prompt)
-        if input_check_int(user_input):
+        if input_check_float(user_input):
             user_input = float(user_input)
             return user_input
         elif q_check(user_input):
@@ -53,7 +53,7 @@ This method takes a string composed of numbers from the user
 input and parses it and appends the data to a string. THis method
 uses spaces and to dilineate between numbers in the string. 
 '''
-def process_data_string(string):
+def process_data_string(string, sort = True):
     if string == False:
         return False
     good_list = ['0','1','2','3','4','5','6','7','8','9','.']
@@ -71,8 +71,8 @@ def process_data_string(string):
             if len(working_string) > 0:
                 a_list.append(float(working_string))
                 working_string = ''
-        
-    a_list.sort()
+    if sort == True:
+        a_list.sort()
     return a_list
 
 '''
