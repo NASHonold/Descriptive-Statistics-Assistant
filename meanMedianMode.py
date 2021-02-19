@@ -135,9 +135,11 @@ def main_loop():
         print('Do you need the handwritten figures as well?',
         '\n(This is sometimes asked for in early homework)')
         handwritten = input('Type (y) for yes and (n) for no: ')
-        while handwritten.lower != 'y' and handwritten.lower != 'n' and handwritten.lower != 'q':
-            print('That is not an option.',
-                'Try again.')
+        while handwritten.lower() != 'y' and handwritten.lower() != 'n' and handwritten.lower() != 'q':
+            print('\nThat is not an option.',
+                'Try again.\n')
+            print('Do you need the handwritten figures as well?',
+            '\n(This is sometimes asked for in early homework)')
             handwritten = input('Type (y) for yes and (n) for no: ')
         if handwritten == 'y':
             handwritten = True
