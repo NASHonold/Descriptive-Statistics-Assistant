@@ -47,16 +47,19 @@ def title_block():
     print('=================================================')
     print(
     '''
-You can calculated the weighted averages 
+You can calculate the weighted averages 
 for your tables with this calculator. 
-When inputting data you can copy and paste,
-you can hand key it in and it doesnt have to be 
-on seperate lines. Ex enter data: 48 54 65 78 etc.
-When you are done with that set of data hit enter
- then type (d) for done. This will save that data 
-and move on to the next set. Also, you can type 
-(q) at any time to quit or of course just exit
-the window. Let's get started
+
+Enter some or all of your dataset and hit enter to save.
+Seperate data points with a comma or space.
+The number of spaces or commas is not discriminate.
+
+When all data is entered for that dataset enter \'d\'  
+on an empty line when done and the program will continue 
+to your next prompt. 
+
+At any point you can type \'q\' to quit and return to 
+main menu
 =================================================
 '''
 )

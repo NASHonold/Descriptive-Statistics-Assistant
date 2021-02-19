@@ -1,3 +1,10 @@
+
+
+
+
+
+
+
 def q_check(string_input):
     if string_input.lower() == 'q':
         return True
@@ -19,8 +26,6 @@ def input_check_float(string_input):
         return True
     except ValueError:
         return False
-
-
 
 def get_int_selection(prompt):
     while True:

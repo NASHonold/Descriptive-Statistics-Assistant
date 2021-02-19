@@ -4,8 +4,11 @@ import valid
 def title_block():
     print('''
 ============ Grouped Frequency Distribution ============
-Follow the prompts below. When entering your datasets
-hit enter to save a portion or all of dataset. 
+Follow the prompts below. 
+
+Enter some or all of your dataset and hit enter to save.
+Seperate data points with a comma or space.
+The number of spaces or commas is not discriminate.
 
 When all data is entered for that data set enter \'d\' for 
 done and the program will continue to your next prompt. 

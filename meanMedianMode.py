@@ -35,6 +35,8 @@ def get_mode(data_list):
     else:
         return current_mode
 
+
+
 '''
 ========================== float get_median() =========================
 method takes the data list after it has been parsed and calculates 
@@ -114,7 +116,24 @@ variance as that formula is slightly different
 def get_pop_variance(data_list, sum_of_squares):
     return sum_of_squares / (len(data_list))
 
+def title_block():
+    print('''
 
+==================== 1 Variable Stats =====================
+This will provide the bulk of data needed for several types
+of statistics problems. 
+
+Enter some or all of your dataset and hit enter to save.
+Seperate data points with a comma or space.
+The number of spaces or commas is not discriminate.
+
+When all data is entered for that dataset input \'d\'  
+on an empty line when done and the program will continue 
+to your next prompt. 
+
+At any point you can type \'q\' to quit and return to 
+main menu
+''')
 '''
 =========================== main_loop() ===========================
 Main loop that will continue to run as long as the user needs. 
@@ -180,6 +199,7 @@ def main_loop():
         print('The population deviation is : {}'.format(format(pop_deviation, '.4f')))
 
         if handwritten:
+            data_set_unsorted = valid.process_data_string(data_string, sort = False)
             print('------------------------------------')
             print('Your Handwritten information: ')
             sum_of_the_squares(data_list, mean, handwritten)

@@ -18,11 +18,17 @@ histogram after calculating the standard class width
 and starting point based on common convention.
 This will also report on the frequency of the class
 that was created as well as its relative frequency. 
-*Important* Like all other tools that take a data 
--set, ensure your data points are seperated by a space
-or a comma if input on the same line. Hit enter to 
-save that data and when all data is input type \'d\' 
-for done to continue. 
+
+Enter some or all of your dataset and hit enter to save.
+Seperate data points with a comma or space
+The number of spaces or commas is not discriminate.
+
+When all data is entered for that dataset enter \'d\'  
+on an empty line when done and the program will continue 
+to your next prompt. 
+
+At any point you can type \'q\' to quit and return to 
+main menu 
 =====================================================
 
     ''')
