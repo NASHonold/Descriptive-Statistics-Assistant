@@ -1,6 +1,6 @@
 
 import meanMedianMode
-import GFDT
+import gfdt
 import zScore
 import weightedMean
 import histogramBuilder
@@ -132,7 +132,7 @@ def main_loop():
             print('in a')
 
         elif choice == 'B':
-            GFDT.main_loop()
+            gfdt.main_loop()
             print()
 
         elif choice == 'C':

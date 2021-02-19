@@ -1,6 +1,19 @@
 
 import valid
 
+def title_block():
+    print('''
+============ Grouped Frequency Distribution ============
+Follow the prompts below. When entering your datasets
+hit enter to save a portion or all of dataset. 
+
+When all data is entered for that data set enter \'d\' for 
+done and the program will continue to your next prompt. 
+
+At any point you can type \'q\' to quit and return to 
+main menu
+
+    ''')
 
 def get_class_widths():
     class_width_prompt = 'What is the width of the classes?: '
@@ -10,11 +23,11 @@ def get_class_widths():
     class_width = valid.get_int_selection(class_width_prompt)
     if class_width == False:
         return False
-
+    print()
     number_of_classes = valid.get_int_selection(number_of_classes_prompt)
     if number_of_classes == False:
         return False
-
+    print()
     starting_class_value = valid.get_int_selection(starting_class_prompt)
     if starting_class_value == False:
         return False
@@ -57,7 +70,7 @@ def get_estimated_xbar(value_list, class_list):
 
 
 def main_loop():
-
+    title_block()
     while True:
         class_widths = get_class_widths()
         if class_widths == False:
