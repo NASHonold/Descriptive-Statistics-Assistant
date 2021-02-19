@@ -6,7 +6,7 @@ def Get_Zscore(value, mean, deviation):
     denominator = deviation
     return (numerator / denominator)
 
-def get_value(zscore, mean, deviation):
+def get_xvalue(zscore, mean, deviation):
     return ((zscore * deviation) + mean)
 
 def Zscore_with_value():
@@ -24,7 +24,7 @@ def Zscore_with_value():
     
 
 
-def get_value_from_zscore():
+def get_xvalue_from_zscore():
     zscore = valid.get_float_selection('What is the Z score?: ')
     if zscore == False:
         return False
@@ -34,7 +34,7 @@ def get_value_from_zscore():
     deviation = valid.get_float_selection('What is the standard deviation?: ')
     if deviation == False:
         return False
-    answer = get_value(zscore, mean, deviation)
+    answer = get_xvalue(zscore, mean, deviation)
     return answer
     print('Your  x value is {}'.format(format(answer, '.4f')))
 
@@ -54,7 +54,7 @@ def main_loop():
                 break
             print('Your z score is {}'.format(format(answer, '.4f')))
         elif operation.strip() == 'v':
-            answer = get_value_from_zscore()
+            answer = get_xvalue_from_zscore()
             if answer == False:
                 break
             print('Your  x value is {}'.format(format(answer, '.4f')))
