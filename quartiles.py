@@ -69,6 +69,13 @@ def get_quartiles(data_list):
         q3 = get_median(b_list)
     return data_list[0],q1,q2,q3,data_list[-1]
 
+'''
+====================== main_func() ======================
+This utilizes all above functions to assign all data values
+needed and then also does basic calculations to produce 
+other data values. This is then printed in a print state-
+ment
+'''
 
 def main_func(data_string):
     data_list = valid.process_data_string(data_string)

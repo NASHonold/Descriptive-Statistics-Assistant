@@ -1,23 +1,39 @@
 import valid
 
 
-
-
-
+'''
+====================== get_numerator() ====================
+Calculates what the numerator of our equation for weighted mean
+'''
 def get_numerator(a_list, b_list):
     sum = 0
     for number in range(len(a_list)):
         sum += (a_list[number] * b_list[number])
     return sum
 
+'''
+==================== get_denominator() =====================
+Calculates what the denominator of our equation for weighted mean 
+'''
 def get_denominator(b_list):
     value = float(sum(b_list))
     return value
 
+'''
+==================== get_weighted() ========================= 
+This calcualtes the value of dividing the numerator by 
+the denominator whish is the weighted value
+'''
 def get_weighted(numerator, denominator):
     result = numerator / denominator
     return result
-
+'''
+======================= list_checker() ======================
+This takes in the two lists provided by the user and checks
+that they are the same length. This is because given a weighted
+average each value must have a weight correlated with it.
+This puts the user into a loop until the lists match in length
+'''
 def list_checker(a_list, b_list):
     while len(a_list) != len(b_list):
         print('''
@@ -64,7 +80,12 @@ main menu
 '''
 )
 
-
+'''
+========================== main_loop() =====================
+This is the main loop that processes two lists in from 
+the user and then performs the calculations on both of
+them and will then return the weighted average. 
+'''
 def main_loop():
     title_block()
     while True:
