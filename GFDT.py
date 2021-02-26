@@ -44,7 +44,12 @@ def get_class_widths():
     
     return class_list
 
-
+'''
+======================= get_values ========================
+This will take in the frequency values for the dataset 
+and will only promt the user the the number of times equal to 
+the number of classes. 
+'''
 def get_values(class_list):
     value_list = []
     value_num = len(class_list)
@@ -61,7 +66,11 @@ def get_values(class_list):
             
     return value_list
 
-
+'''
+==================== get_estimates_xbar() ===================
+This will take in both the value list and the class list and 
+and return the xbar 
+'''
 def get_estimated_xbar(value_list, class_list):
     multi_list = []
     for x in range(len(value_list)):
@@ -71,7 +80,11 @@ def get_estimated_xbar(value_list, class_list):
     frequency_sum = sum(value_list)
     return multi_list_sum / frequency_sum
 
-
+'''
+===================== main_loop() =====================
+Main_loop prompts the user for inputs, calculates xbar, 
+and will contine until the user inputs a q for quit 
+'''
 def main_loop():
     title_block()
     while True:

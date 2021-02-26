@@ -33,7 +33,11 @@ main menu
 
     ''')
 
-
+'''
+===================== get_range() ===================
+Takes in list of values and determines the range of 
+the list
+'''
 def get_range(list):
     max_value = list[0]
     min_value = list[0]
@@ -47,18 +51,36 @@ def get_range(list):
     
     return range, min_value, max_value
 
-
+'''
+===================== get_class_width() ===================
+takes range and number of classes as arguement and returns 
+the width of each class
+'''
 def get_class_width(range, class_num):
     return format(range / class_num,'.6f')
 
-def create_class_boundry_list(graph_start,class_width, number):
+'''
+================ create_class_boundry_list() ===============
+Takes the value the graph starts as , class width and number
+of classes as arguments and creates a list of class boundaries 
+to be used by the build_graph() func
+'''
+def create_class_boundry_list(graph_start,class_width, class_num):
     boundaries = []
     boundaries.append(graph_start)
-    for i in range(number):
+    for i in range(class_num):
         var = boundaries[-1] + class_width
         boundaries.append(var)
     return boundaries
 
+'''
+================== build_graph() ====================
+This takes the sorted dataset and the output of 
+create_class_boundary_list() as arguments and will
+print off the associated values for each class for 
+the entire dataset. This is the main function of this 
+file
+'''
 def build_graph(sorted_list, boundary_list):
     sorted_list.sort()
     number = len(boundary_list) - 1
@@ -83,7 +105,11 @@ def build_graph(sorted_list, boundary_list):
     print(master_list)
 
 
-
+'''
+======================= main_loop() ========================
+Will repeat taking user input and outputting the associated 
+graph until the user inputs q for quit. 
+'''
 def main_loop():
     title_block()
     while True:
