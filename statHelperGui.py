@@ -8,14 +8,14 @@ input in personal calculator in a more user friendly way
 '''
 
 
-import os,sys
+from oneVarStatWindow import oneVarStat
+import os,sys, pathlib
 from os import path
 from tkinter import *
-from types import WrapperDescriptorType
 from PIL import ImageTk, Image
 from resizeimage import resizeimage
-import pathlib
 
+#local imports
 from explain import explain
 
 '''
@@ -25,6 +25,7 @@ Restarts program and clears all currently open windows
 def restart_program():
     python = str(pathlib.Path(__file__).absolute())
     base.quit()
+    
     os.startfile(python)
 '''
 when i eventually want to open without terminal i can look 
@@ -61,7 +62,7 @@ qmark = ImageTk.PhotoImage(qmark)
 
 
 #main menu buttons to open the specific tools
-mmm_button = Button(base, text='1 Variable Stats',relief=RAISED)
+mmm_button = Button(base, text='1 Variable Stats',relief=RAISED,command=oneVarStat)
 mmm_button.grid(row=1, column=1, padx=(60,0),ipadx=61,pady=5, sticky=W)
 
 gfdt_button = Button(base, text='Grouped Frequency Distribution Table', relief=RAISED)

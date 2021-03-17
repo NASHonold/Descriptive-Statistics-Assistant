@@ -52,6 +52,7 @@ additional values. Could then pass this list to a print
 func...
 '''
 def get_quartiles(data_list):
+    data_list = valid.process_data_string(data_list)
     
     median_index, median_index2 = Get_Median_Index(data_list)
     
@@ -78,8 +79,8 @@ ment
 '''
 
 def main_func(data_string):
-    data_list = valid.process_data_string(data_string)
-    min, q1, q2, q3, max = get_quartiles(data_list)
+    #data_list = valid.process_data_string(data_string)
+    min, q1, q2, q3, max = get_quartiles(data_string)
     iqr = (q3 - q1)
     lower_fence = q1 - (1.5 * iqr)
     upper_fence = q3 + (1.5 * iqr)

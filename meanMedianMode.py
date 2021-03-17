@@ -31,7 +31,7 @@ def get_mode(data_list):
             current_mode = data_list[index]
         index += 1
     if frequency == 1:
-        return "There is no mode available."
+        return "No mode available."
     else:
         return current_mode
 
@@ -207,3 +207,20 @@ def main_loop():
             print('------------------------------------')
         quartiles.main_func(data_string)
 
+def main_func(datasetString):
+    if datasetString == '':
+        pass
+    else:
+        datasetString = valid.process_data_string(datasetString)
+
+        mean = get_mean(datasetString)
+        median = get_median(datasetString)
+        mode = get_mode(datasetString)
+        data_range = get_range(datasetString)
+        big_n = len(datasetString)
+        sum_of_squares = sum_of_the_squares(datasetString, mean)
+        variance = get_variance(datasetString, sum_of_squares)
+        pop_variance = get_pop_variance(datasetString, sum_of_squares)
+        deviation = get_deviation(variance)
+        pop_deviation = get_deviation(pop_variance)
+        return mean, median, mode, data_range, sum_of_squares,variance, deviation,pop_variance, pop_deviation 
