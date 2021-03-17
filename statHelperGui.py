@@ -42,7 +42,7 @@ to do it in several different ways
 3  try catch blocks??? probably not though 
 '''
 
-
+# set up the main window 
 global windows 
 windows = []
 base = Tk()
@@ -55,7 +55,7 @@ h = 300
 sw = base.winfo_screenmmwidth()
 sh = base.winfo_screenheight()
 
-x =200
+x =400
 y= 100
 
 base.geometry('%dx%d+%d+%d' % (w, h, x, y))
