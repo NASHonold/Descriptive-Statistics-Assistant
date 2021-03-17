@@ -1,10 +1,4 @@
 
-
-
-
-
-
-
 def q_check(string_input):
     if string_input.lower() == 'q':
         return True

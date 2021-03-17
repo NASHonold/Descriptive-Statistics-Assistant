@@ -27,8 +27,9 @@ def restart_program():
     python = str(pathlib.Path(__file__).absolute())
     for x in windows:
         x.destroy()
+    base.destroy()    
     base.quit()
-    base.destroy()
+    
     
     os.startfile(python)
 '''

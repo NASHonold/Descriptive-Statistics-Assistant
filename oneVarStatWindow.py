@@ -17,8 +17,8 @@ def create_hw_string(dataset):
         squared = dataset[2][x]
 
         first_line = 'For the value {}:'.format(value)+'\n'
-        second = '{} - {} = {}'.format(value, mean, after_sub) + '\n'
-        third = '{} squared is {}\n'.format(after_sub,squared)
+        second = '{} - {:.4f} = {:.4f}'.format(value, mean, after_sub) + '\n'
+        third = '{:.4f} squared is {:.4f}\n'.format(after_sub,squared)
         this_string = first_line + second + third + '\n'
         return_string = return_string + this_string 
 
@@ -157,7 +157,6 @@ def oneVarStat(windows):
     calc_button.grid(row=1, column=0, ipady=10,  ipadx=70, padx=(40,0),sticky=W, 
      columnspan=2)
 
-    this_text = data_set_entry.get('1.0','end')
-    print(this_text)
+    
 
     window.mainloop()
