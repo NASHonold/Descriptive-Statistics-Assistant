@@ -23,8 +23,12 @@ from explain import explain
 Restarts program and clears all currently open windows
 '''
 def restart_program():
+    global windows
     python = str(pathlib.Path(__file__).absolute())
+    for x in windows:
+        x.destroy()
     base.quit()
+    base.destroy()
     
     os.startfile(python)
 '''
@@ -38,7 +42,8 @@ to do it in several different ways
 '''
 
 
-
+global windows 
+windows = []
 base = Tk()
 base.title('Stat Helper Free')
 base.iconbitmap('images/icon.ico')
@@ -61,7 +66,7 @@ qmark = ImageTk.PhotoImage(qmark)
 
 
 #main menu buttons to open the specific tools
-mmm_button = Button(base, text='1 Variable Stats',relief=RAISED,command=oneVarStat)
+mmm_button = Button(base, text='1 Variable Stats',relief=RAISED,command= lambda :oneVarStat(windows))
 mmm_button.grid(row=1, column=1, padx=(60,0),ipadx=61,pady=5, sticky=W)
 
 gfdt_button = Button(base, text='Grouped Frequency Distribution Table', relief=RAISED)
@@ -98,7 +103,5 @@ q5.grid(row=5, column=2, sticky=W, padx=(5,60))
 reset_button = Button(base, text='Reset Windows', command=restart_program, border=5)
 reset_button.grid(row=6 , column=0, columnspan=3, ipadx=77, ipady=30)
 
-
-
-
+print(windows)
 mainloop()

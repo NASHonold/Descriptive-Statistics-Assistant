@@ -1,8 +1,11 @@
 from os import O_SEQUENTIAL
 import tkinter as tk
-from tkinter.constants import E, END, LEFT, W
+from tkinter.constants import E, END, LEFT, RAISED, W
 from tkinter.scrolledtext import ScrolledText
+from typing import Text
 import meanMedianMode, quartiles
+
+
 
 
 def create_hw_string(dataset):
@@ -10,11 +13,8 @@ def create_hw_string(dataset):
     return_string =''
     for x in range(len(dataset[0])):
         value = dataset[0][x]
-        print(value)
         after_sub = dataset[1][x]
-        print(after_sub)
         squared = dataset[2][x]
-        print(squared)
 
         first_line = 'For the value {}:'.format(value)+'\n'
         second = '{} - {} = {}'.format(value, mean, after_sub) + '\n'
@@ -22,10 +22,21 @@ def create_hw_string(dataset):
         this_string = first_line + second + third + '\n'
         return_string = return_string + this_string 
 
-    last_string = '\n The sum of all squares is {:.4f}'.format(sum)
+    last_string = 'The sum of all squares is {:.4f}'.format(sum)
 
     return_string = return_string + last_string
     return return_string
+
+def handwork(tkwindowname, hw_text):
+    global handwork_title_label
+    global handwork_text_label
+
+    handwork_title_label = tk.Label(tkwindowname,text='Handwritten Figures:')
+    handwork_title_label.grid(row=0, column=4 )
+
+    handwork_text_label = tk.Label(tkwindowname, text=hw_text, justify=LEFT)
+    handwork_text_label.grid(row=1, column=4, rowspan=9)
+
 
 
 
@@ -41,7 +52,6 @@ def calculate(text_widget, tkwindowname):
     upper_fence = q3 + (1.5 * iqr)
 
     hw_string = create_hw_string(dataset)
-    print(hw_string)
 
     data_summary_text = '''
 Mean:
@@ -108,17 +118,32 @@ Upper Fence:
     summary_data_label = tk.Label(tkwindowname, text=five_summary_data, justify=LEFT)
     summary_data_label.grid(row=3, column=3, sticky=W)
 
-    handwritten_button = tk.Button(tkwindowname, text='Handwritten Figures')
+    handwritten_button = tk.Button(tkwindowname, text='Handwritten Figures', 
+        command= lambda: handwork(tkwindowname,hw_string), relief=RAISED)
     handwritten_button.grid(row=1, column=2, ipady=10, columnspan=2, sticky=W,ipadx=30 )
 
+
+    try:
+        global handwork_title_label
+        global handwork_text_label
+        handwork_title_label.destroy()
+        handwork_text_label.destroy()
+
+    except NameError:
+        pass
 
     
 
 
-def oneVarStat():
+
+def oneVarStat(windows):
+    
     window = tk.Toplevel()
+    windows.append(window)
     window.title('One Variable Stat')
     window.iconbitmap('images/icon.ico')
+    
+
     
     input_frame = tk.LabelFrame(window, text='Input Dataset here...')
     input_frame.grid(row=0, column=0, columnspan=4)
@@ -127,8 +152,10 @@ def oneVarStat():
     data_set_entry.grid(row=0, column=0)
     data_set_entry.grid_propagate = False
 
-    calc_button = tk.Button(window, text='Calculate', command= lambda: calculate(data_set_entry, window))
-    calc_button.grid(row=1, column=0, ipady=10, columnspan=2, ipadx=60 )
+    calc_button = tk.Button(window, text='Calculate', 
+        command= lambda: calculate(data_set_entry, window))
+    calc_button.grid(row=1, column=0, ipady=10,  ipadx=70, padx=(40,0),sticky=W, 
+     columnspan=2)
 
     this_text = data_set_entry.get('1.0','end')
     print(this_text)
