@@ -90,6 +90,28 @@ def sum_of_the_squares(data_list, mean, value=False):
 
 
 '''
+=================== handwritten_results() ====================
+'''
+def handwritten_results(data_list):
+    data_list = valid.process_data_string(data_list)
+    mean = get_mean(data_list)
+    sum = 0
+    dataset_values = [[],[],[]]
+
+    count = 0
+    for number in data_list:
+        num = number - mean
+        num_squared = num**2
+        sum += num_squared
+        dataset_values[0].append(number)
+        dataset_values[1].append(num)
+        dataset_values[2].append(num_squared)
+        count += 1
+        
+    print(dataset_values)
+    return dataset_values, mean, sum
+
+'''
 =========================== get_variance() =========================
 Takes the dataset as argument as well as the return value from 
 sum_of_the_squares() and will determine the variance for this 

@@ -1,7 +1,33 @@
+from os import O_SEQUENTIAL
 import tkinter as tk
 from tkinter.constants import E, END, LEFT, W
 from tkinter.scrolledtext import ScrolledText
 import meanMedianMode, quartiles
+
+
+def create_hw_string(dataset):
+    dataset, mean, sum = meanMedianMode.handwritten_results(dataset)
+    return_string =''
+    for x in range(len(dataset[0])):
+        value = dataset[0][x]
+        print(value)
+        after_sub = dataset[1][x]
+        print(after_sub)
+        squared = dataset[2][x]
+        print(squared)
+
+        first_line = 'For the value {}:'.format(value)+'\n'
+        second = '{} - {} = {}'.format(value, mean, after_sub) + '\n'
+        third = '{} squared is {}\n'.format(after_sub,squared)
+        this_string = first_line + second + third + '\n'
+        return_string = return_string + this_string 
+
+    last_string = '\n The sum of all squares is {:.4f}'.format(sum)
+
+    return_string = return_string + last_string
+    return return_string
+
+
 
 
 def calculate(text_widget, tkwindowname):
@@ -13,6 +39,9 @@ def calculate(text_widget, tkwindowname):
     iqr = (q3 - q1)
     lower_fence = q1 - (1.5 * iqr)
     upper_fence = q3 + (1.5 * iqr)
+
+    hw_string = create_hw_string(dataset)
+    print(hw_string)
 
     data_summary_text = '''
 Mean:
@@ -60,8 +89,8 @@ Upper Fence:
     '''.format(min, q1,q2,q3,max,iqr,lower_fence, upper_fence)
     
     #the labels for mean, median, mode, range, standard and population variance and deviation
-    mean_label = tk.Label(tkwindowname, text='Dataset Info Summary:')
-    mean_label.grid(row=2, column=0,columnspan=2)
+    mean_label = tk.Label(tkwindowname, text='Dataset Info Summary:', justify=LEFT)
+    mean_label.grid(row=2, column=0,columnspan=2, sticky=W)
 
     median_label = tk.Label(tkwindowname, text=data_summary_text,justify=LEFT)
     median_label.grid(row=3, column=0,sticky=W)
@@ -70,8 +99,8 @@ Upper Fence:
     mode_label.grid(row=3, column=1,sticky=W)
 
     #labels for 5 number summary 
-    summary = tk.Label(tkwindowname, text='5 Number Summary:')
-    summary.grid(row=2, column=2, columnspan=2)
+    summary = tk.Label(tkwindowname, text='5 Number Summary:', justify=LEFT)
+    summary.grid(row=2, column=2, columnspan=2, sticky=W)
 
     summary_label = tk.Label(tkwindowname, text=five_summary_text, justify=LEFT)
     summary_label.grid(row=3, column=2, sticky=W)
@@ -80,7 +109,7 @@ Upper Fence:
     summary_data_label.grid(row=3, column=3, sticky=W)
 
     handwritten_button = tk.Button(tkwindowname, text='Handwritten Figures')
-    handwritten_button.grid(row=1, column=2, ipady=10, sticky=W, columnspan=2, ipadx=70)
+    handwritten_button.grid(row=1, column=2, ipady=10, columnspan=2, sticky=W,ipadx=30 )
 
 
     
@@ -94,17 +123,14 @@ def oneVarStat():
     input_frame = tk.LabelFrame(window, text='Input Dataset here...')
     input_frame.grid(row=0, column=0, columnspan=4)
 
-    data_set_entry = ScrolledText(input_frame, width = 45, height =20)
+    data_set_entry = ScrolledText(input_frame, width = 60, height =10)
     data_set_entry.grid(row=0, column=0)
     data_set_entry.grid_propagate = False
 
     calc_button = tk.Button(window, text='Calculate', command= lambda: calculate(data_set_entry, window))
-    calc_button.grid(row=1, column=0, ipady=10, sticky=W, columnspan=2, ipadx=70)
-
-
+    calc_button.grid(row=1, column=0, ipady=10, columnspan=2, ipadx=60 )
 
     this_text = data_set_entry.get('1.0','end')
     print(this_text)
-
 
     window.mainloop()

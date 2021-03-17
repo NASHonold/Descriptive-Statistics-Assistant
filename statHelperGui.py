@@ -48,7 +48,6 @@ h = 300
 #get screen width and height
 sw = base.winfo_screenmmwidth()
 sh = base.winfo_screenheight()
-print('screenwidth is : {} and screenheight is : {}'.format(sw,sh))
 
 x =200
 y= 100
