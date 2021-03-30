@@ -8,7 +8,12 @@ input in personal calculator in a more user friendly way
 '''
 
 
-from oneVarStatWindow import oneVarStat
+
+
+
+# from zScoreWindow import z_score_window
+# from oneVarStatWindow import oneVarStat
+
 import os,sys, pathlib
 from os import path
 from tkinter import *
@@ -16,7 +21,8 @@ from PIL import ImageTk, Image
 from resizeimage import resizeimage
 
 #local imports
-from explain import explain
+import zScoreWindow as Z, oneVarStatWindow as oneV, explain as explain
+
 
 '''
 ------------------ restart_program() ------------------
@@ -54,8 +60,9 @@ h = 300
 #get screen width and height
 sw = base.winfo_screenmmwidth()
 sh = base.winfo_screenheight()
-
-x =400
+# create function that determines window will appear in upper left corner and then pass 
+# the new values to the subsequent lambda functions 
+x =100
 y= 100
 
 base.geometry('%dx%d+%d+%d' % (w, h, x, y))
@@ -67,13 +74,13 @@ qmark = ImageTk.PhotoImage(qmark)
 
 
 #main menu buttons to open the specific tools
-mmm_button = Button(base, text='1 Variable Stats',relief=RAISED,command= lambda :oneVarStat(windows))
+mmm_button = Button(base, text='1 Variable Stats',relief=RAISED,command= lambda :oneV.oneVarStat(windows))
 mmm_button.grid(row=1, column=1, padx=(60,0),ipadx=61,pady=5, sticky=W)
 
 gfdt_button = Button(base, text='Grouped Frequency Distribution Table', relief=RAISED)
 gfdt_button.grid(row=2,column=1, padx=(60,0), sticky=W)
 
-zscore_button = Button(base, text='Z score calculations', relief=RAISED)
+zscore_button = Button(base, text='Z score calculations', relief=RAISED, command= lambda : Z.z_score_window(windows))
 zscore_button.grid(row=3,column=1, padx=(60,0),ipadx=48,pady=5, sticky=W)
 
 
@@ -85,19 +92,19 @@ gfdt_button = Button(base, text='Histogram Maker', relief=RAISED)
 gfdt_button.grid(row=5,column=1, padx=(60,0),ipadx=54,pady=5, sticky=W)
 
 #help buttons to explain the functions
-q1 = Button(base, image=qmark, relief=RAISED, command= lambda : explain(1))
+q1 = Button(base, image=qmark, relief=RAISED, command= lambda : explain.explain(1))
 q1.grid(row=1, column=2, sticky=W, padx=(5,60))
 
-q2 = Button(base, image=qmark, relief=RAISED, command= lambda : explain(2))
+q2 = Button(base, image=qmark, relief=RAISED, command= lambda : explain.explain(2))
 q2.grid(row=2, column=2, sticky=W, padx=(5,60))
 
-q3 = Button(base, image=qmark, relief=RAISED, command= lambda : explain(3))
+q3 = Button(base, image=qmark, relief=RAISED, command= lambda : explain.explain(3))
 q3.grid(row=3, column=2, sticky=W, padx=(5,60))
 
-q4 = Button(base, image=qmark, relief=RAISED, command= lambda : explain(4))
+q4 = Button(base, image=qmark, relief=RAISED, command= lambda : explain.explain(4))
 q4.grid(row=4, column=2, sticky=W, padx=(5,60))
 
-q5 = Button(base, image=qmark, relief=RAISED, command= lambda : explain(5))
+q5 = Button(base, image=qmark, relief=RAISED, command= lambda : explain.explain(5))
 q5.grid(row=5, column=2, sticky=W, padx=(5,60))
 
 #reset button

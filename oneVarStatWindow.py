@@ -1,4 +1,3 @@
-from os import O_SEQUENTIAL
 import tkinter as tk
 from tkinter.constants import E, END, LEFT, RAISED, W
 from tkinter.scrolledtext import ScrolledText
@@ -142,6 +141,7 @@ def oneVarStat(windows):
     windows.append(window)
     window.title('One Variable Stat')
     window.iconbitmap('images/icon.ico')
+    window.geometry("+475+100")
     
 
     
