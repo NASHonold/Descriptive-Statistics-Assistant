@@ -6,35 +6,44 @@ import zScore
 
 
 def check_values(input_list):
-    
+    '''
+    this checks the values that are in the 4 entry boxes
+    if a calc cannot be done then it will return a string
+    to provide for the error label for the user, otherwise
+    it will return a list with a length of 4 float numbers
+    '''
     empty_val_count = 0
     value_list = []
     for value in input_list:
         val = value.get().strip()
-        print('in for loop')
         if len(val) == 0:
             empty_val_count += 1
             value_list.append(0)
-            print('found a value that was empty')
         elif len(val) != 0:
             try:
-                print('made it into the try block ')
                 val = float(val)
-                print('was able to convert to float')
                 value_list.append(val)
             except ValueError:
                 return 'Cannot input non-numeric values'
 
     if empty_val_count > 1:
         return "There are not enough values for calculation"
+
     elif empty_val_count == 0:
-        return 'Ther are too many values'
+        return 'There are too many values'
+
     if value_list[2] == 0 or value_list[3] == 0:
         return 'There are not enough values for calculation' 
 
     return value_list
 
 def calc_button_command(input_list,output_list, error_label):
+    '''
+    this function will retrieve the values from entry boxes
+    and either perform the calculation and update the 
+    output labels or will provide an error msg in the 
+    window for the user. 
+    '''
     global default_color
     error_label.config(text='', bg = default_color)
 
@@ -70,6 +79,14 @@ def calc_button_command(input_list,output_list, error_label):
 
 
 def z_score_window(windows):
+    '''
+    This command is called by the zscore menu button 
+    and is the main function that creates a window to 
+    calculate zscore or x value with the other 3 
+    pieces of information
+    '''
+
+
     directions = '''
 In the input boxes enter the 3 pieces of 
 data you have and click \"Calculate\" and 
@@ -85,8 +102,10 @@ the value will appear below.'''
     direct = tk.Label(window, text=directions, width=54,)
     direct.grid(row=0, column=0, columnspan=4,padx=4)
 
+    #creating from for entry boxes
     a_frame = tk.Frame(window, relief=GROOVE, bd=1)
     a_frame.grid(row=1, column=0, columnspan=4, padx=(0,3))
+    
     # entry boxes
     x_value_input = tk.Entry(a_frame, width=15)
     x_value_input.grid(row=0, column=1,pady=(10,0))
@@ -100,8 +119,7 @@ the value will appear below.'''
     deviation_input = tk.Entry(a_frame, width=15)
     deviation_input.grid(row=1, column=3)
 
-    #a list of Entry widgets to pass to function
-    input_list = [x_value_input, z_score_input,mean_input, deviation_input]
+    
 
     #entry box labels
     x_value_label = tk.Label(a_frame, text='X value:')
@@ -136,15 +154,8 @@ the value will appear below.'''
     deviation_output_label = tk.Label(window, text='Standard Deviation:')
     deviation_output_label.grid(row=6, column=2, padx=(0,20),sticky=E)
 
-    
-    #temporary strings to fill the labels
-    values = ['','','','']
-    x_val = values[0]
-    z_val = values[1]
-    mean_val = values[2]
-    dev_val = values[3]
 
-    #output label values
+    #output label values will pass to calc_button_command() for update 
     x_value_output = tk.Label(window, text='')
     x_value_output.grid(row=3, column=3,pady=(10,0),sticky=W)
 
@@ -157,33 +168,22 @@ the value will appear below.'''
     deviation_output = tk.Label(window, text='')
     deviation_output.grid(row=6, column=3, sticky=W)
 
+    #list of output widgets that will be passed to the calc_button_command()
     output_list = [x_value_output,z_score_output,mean_output,deviation_output]
 
-    #creating the empty error label space to pass to the calc_command
+    #a list of Entry widgets to pass to the calc_button_command()
+    input_list = [x_value_input, z_score_input,mean_input, deviation_input]
+
+    #creating the empty error label space to pass to the calc_button_command()
     error_label = tk.Label(window, text='', pady=5)
     error_label.grid(row=7, column=0, columnspan=5)
 
-    #grab default button color
+    #grabbing default button color to pass to calc_button_command()
     global default_color
     default_color = error_label['bg']
-    #need to determine if need zscore or need x value
-    # may not need the above if just create 4 input widgets and check if they contain values 
-     
-    # get data
-    #calculate score
-    #display data
-
-
-
-
 
 
 
     tk.mainloop()
     
 
-a_string = '12.3'
-a_number = float(a_string)
-a_string = type(a_string)
-print(a_string)
-test_vals = ['12.3','','5','3']
