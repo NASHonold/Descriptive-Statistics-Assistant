@@ -96,7 +96,7 @@ the value will appear below.'''
     windows.append(window)
     window.title('Z Score Calculator')
     window.iconbitmap('images/icon.ico')
-    window.geometry("385x270+1200+350")
+    window.geometry("385x270+1200+100")
 
     # Directions
     direct = tk.Label(window, text=directions, width=54,)

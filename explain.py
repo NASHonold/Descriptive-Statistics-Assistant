@@ -1,6 +1,12 @@
 
 from tkinter import *
+'''
+This file contains the text for all of the question mark buttons to display. 
+The function explain takes a num input that is the index for both arrays of strings. 
+then it simply displays that data in a new window for the user so they can 
+understand what the menu item does before clicking on it. 
 
+'''
 def explain(num):
     text_list = [
         '''

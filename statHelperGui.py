@@ -21,7 +21,7 @@ from PIL import ImageTk, Image
 from resizeimage import resizeimage
 
 #local imports
-import zScoreWindow as Z, oneVarStatWindow as oneV, explain as explain
+import zScoreWindow as Z, oneVarStatWindow as oneV, explain as explain, weightedAvgWindow as avg
 
 
 '''
@@ -30,14 +30,12 @@ Restarts program and clears all currently open windows
 '''
 def restart_program():
     global windows
-    python = str(pathlib.Path(__file__).absolute())
+    #python = str(pathlib.Path(__file__).absolute())
     for x in windows:
         x.destroy()
-    base.destroy()    
-    base.quit()
-    
-    
-    os.startfile(python)
+    # base.destroy()    
+    # base.quit()
+    # os.startfile(python)
 '''
 when i eventually want to open without terminal i can look 
 to do it in several different ways
@@ -67,7 +65,7 @@ y= 100
 
 base.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-
+#set up the question mark image for the menu help buttons
 qmark = Image.open('images/qmark.png')
 qmark = resizeimage.resize_contain(qmark, [20,20])
 qmark = ImageTk.PhotoImage(qmark)
@@ -84,7 +82,7 @@ zscore_button = Button(base, text='Z score calculations', relief=RAISED, command
 zscore_button.grid(row=3,column=1, padx=(60,0),ipadx=48,pady=5, sticky=W)
 
 
-weighted_button = Button(base, text='Weighted Average calculation', relief=RAISED)
+weighted_button = Button(base, text='Weighted Average calculation', relief=RAISED, command= lambda : avg.weightAvgWindow(windows))
 weighted_button.grid(row=4,column=1, padx=(60,0),ipadx=21, sticky=W)
 
 

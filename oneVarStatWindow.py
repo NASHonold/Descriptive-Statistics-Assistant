@@ -141,7 +141,7 @@ def oneVarStat(windows):
     windows.append(window)
     window.title('One Variable Stat')
     window.iconbitmap('images/icon.ico')
-    window.geometry("+475+100")
+    window.geometry("+485+100")
     
 
     
